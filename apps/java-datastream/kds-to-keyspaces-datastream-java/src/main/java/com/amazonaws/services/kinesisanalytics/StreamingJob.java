@@ -44,6 +44,7 @@ import org.slf4j.LoggerFactory;
 
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.*;
 
 public class StreamingJob {
@@ -168,6 +169,7 @@ public class StreamingJob {
 							}
 						})
 				.setMapperOptions(() -> new Mapper.Option[] {Mapper.Option.saveNullFields(true)})
+				.setMaxConcurrentRequests(2, Duration.ofSeconds(60))
 				.setDefaultKeyspace("stock")
 				.build();
 
