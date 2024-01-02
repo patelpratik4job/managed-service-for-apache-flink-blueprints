@@ -2,7 +2,7 @@
 
 set -x
 
-AWS_ACCOUNT_ID=$(aws sts get-caller-identity) | jq -r ".Account"
+AWS_ACCOUNT_ID=$(aws sts get-caller-identity | jq -r ".Account")
 AWS_REGION=$(aws configure get region)
 BUCKET_NAME="msf-blueprints-kds-to-s3-${AWS_ACCOUNT_ID}-${AWS_REGION}"
 APP_NAME=kds-to-s3-datastream-java
